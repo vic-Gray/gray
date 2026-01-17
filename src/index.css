@@ -9,50 +9,50 @@
 @layer base {
   :root {
     --background: 0 0% 0%;
-    --foreground: 0 0% 90%;
+    --foreground: 0 0% 85%;
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 90%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 85%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 90%;
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 85%;
 
-    --primary: 160 100% 50%;
+    --primary: 0 0% 70%;
     --primary-foreground: 0 0% 0%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 85%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 50%;
 
-    --accent: 160 100% 50%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 90%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 15%;
-    --ring: 160 100% 50%;
+    --border: 0 0% 18%;
+    --input: 0 0% 12%;
+    --ring: 0 0% 60%;
 
     --radius: 0.5rem;
 
     /* Custom terminal colors */
-    --terminal-bg: 0 0% 7%;
-    --terminal-header: 0 0% 12%;
-    --terminal-text: 0 0% 80%;
-    --terminal-cursor: 160 100% 50%;
-    --glow-primary: 160 100% 50%;
+    --terminal-bg: 0 0% 5%;
+    --terminal-header: 0 0% 10%;
+    --terminal-text: 0 0% 75%;
+    --terminal-cursor: 0 0% 80%;
+    --glow-primary: 0 0% 50%;
     
     /* Gradient definitions */
-    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 8%) 100%);
-    --gradient-glow: radial-gradient(ellipse at center, hsl(160 100% 50% / 0.15) 0%, transparent 70%);
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 6%) 100%);
+    --gradient-glow: radial-gradient(ellipse at center, hsl(0 0% 30% / 0.15) 0%, transparent 70%);
   }
 
   .dark {
     --background: 0 0% 0%;
-    --foreground: 0 0% 90%;
+    --foreground: 0 0% 85%;
   }
 }
 
@@ -78,19 +78,18 @@
 
 @layer components {
   .glow-text {
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.5),
-                 0 0 20px hsl(var(--primary) / 0.3),
-                 0 0 40px hsl(var(--primary) / 0.1);
+    text-shadow: 0 0 10px hsl(0 0% 100% / 0.3),
+                 0 0 20px hsl(0 0% 100% / 0.15);
   }
 
   .glow-box {
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.2),
-                0 0 40px hsl(var(--primary) / 0.1);
+    box-shadow: 0 0 20px hsl(0 0% 100% / 0.08),
+                0 0 40px hsl(0 0% 100% / 0.04);
   }
 
   .glow-border {
-    box-shadow: inset 0 0 0 1px hsl(var(--primary) / 0.3),
-                0 0 20px hsl(var(--primary) / 0.1);
+    box-shadow: inset 0 0 0 1px hsl(0 0% 100% / 0.1),
+                0 0 20px hsl(0 0% 100% / 0.05);
   }
 
   .terminal-window {
@@ -160,12 +159,12 @@
 
   @keyframes pulse-glow {
     0%, 100% { 
-      box-shadow: 0 0 20px hsl(var(--primary) / 0.2),
-                  0 0 40px hsl(var(--primary) / 0.1);
+      box-shadow: 0 0 20px hsl(0 0% 100% / 0.06),
+                  0 0 40px hsl(0 0% 100% / 0.03);
     }
     50% { 
-      box-shadow: 0 0 30px hsl(var(--primary) / 0.4),
-                  0 0 60px hsl(var(--primary) / 0.2);
+      box-shadow: 0 0 30px hsl(0 0% 100% / 0.1),
+                  0 0 60px hsl(0 0% 100% / 0.05);
     }
   }
 
@@ -176,7 +175,7 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-emerald-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400;
   }
 
   .bg-grid-pattern {

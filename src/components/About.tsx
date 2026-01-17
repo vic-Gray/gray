@@ -50,7 +50,7 @@ const About = () => {
           >
             {/* Avatar Placeholder */}
             <div className="relative mb-8 flex justify-center lg:justify-start">
-              <div className="w-48 h-48 rounded-xl bg-gradient-to-br from-primary/20 to-secondary border border-border overflow-hidden glow-border">
+              <div className="w-48 h-48 rounded-xl bg-gradient-to-br from-white/10 to-secondary border border-border overflow-hidden glow-border">
                 <div className="w-full h-full bg-secondary flex items-center justify-center">
                   <span className="text-6xl">👨‍💻</span>
                 </div>
@@ -74,22 +74,22 @@ const About = () => {
                 <div className="code-line pl-4">
                   <span className="text-primary">"name"</span>
                   <span className="text-muted-foreground">:</span>
-                  <span className="text-emerald-400 ml-2">"Victory Ifeanyi Azuonye"</span>
+                  <span className="text-gray-300 ml-2">"Victory Ifeanyi Azuonye"</span>
                 </div>
                 <div className="code-line pl-4">
                   <span className="text-primary">"role"</span>
                   <span className="text-muted-foreground">:</span>
-                  <span className="text-emerald-400 ml-2">"Backend Engineer"</span>
+                  <span className="text-gray-300 ml-2">"Backend Engineer"</span>
                 </div>
                 <div className="code-line pl-4">
                   <span className="text-primary">"focus"</span>
                   <span className="text-muted-foreground">:</span>
-                  <span className="text-emerald-400 ml-2">["APIs", "Web3", "DevOps"]</span>
+                  <span className="text-gray-300 ml-2">["APIs", "Web3", "DevOps"]</span>
                 </div>
                 <div className="code-line pl-4">
                   <span className="text-primary">"available"</span>
                   <span className="text-muted-foreground">:</span>
-                  <span className="text-amber-400 ml-2">true</span>
+                  <span className="text-gray-400 ml-2">true</span>
                 </div>
                 <div className="code-line">
                   <span className="text-muted-foreground">{"}"}</span>
@@ -151,7 +151,7 @@ const About = () => {
                         initial={{ width: 0 }}
                         animate={isInView ? { width: `${skill.level}%` } : {}}
                         transition={{ duration: 1, delay: 0.8 + index * 0.1 }}
-                        className="h-full bg-gradient-to-r from-primary to-emerald-400 rounded-full"
+                        className="h-full bg-gradient-to-r from-white to-gray-500 rounded-full"
                       />
                     </div>
                   </motion.div>
