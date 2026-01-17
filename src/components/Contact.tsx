@@ -134,7 +134,7 @@ const Contact = () => {
                 whileTap={{ scale: 0.98 }}
                 className={`w-full py-4 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all ${
                   status === "success"
-                    ? "bg-emerald-500 text-white"
+                    ? "bg-white text-black"
                     : "bg-primary text-primary-foreground hover:bg-primary/90"
                 }`}
               >
@@ -163,9 +163,9 @@ const Contact = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4 font-mono text-sm"
+                  className="bg-white/10 border border-white/20 rounded-lg p-4 font-mono text-sm"
                 >
-                  <div className="text-emerald-400 mb-2">Response: 200 OK</div>
+                  <div className="text-gray-300 mb-2">Response: 200 OK</div>
                   <pre className="text-xs text-muted-foreground">
 {`{
   "status": "success",

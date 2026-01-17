@@ -97,8 +97,8 @@ const Projects = () => {
                   {/* Project Header */}
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 bg-primary/10 rounded-lg">
-                        <project.icon className="w-6 h-6 text-primary" />
+                      <div className="p-2 bg-white/10 rounded-lg">
+                        <project.icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
                         <h3 className="text-lg font-semibold">{project.name}</h3>
@@ -158,19 +158,19 @@ const Projects = () => {
                       <div className="pl-4">
                         <span className="text-primary">"name"</span>
                         <span className="text-muted-foreground">: </span>
-                        <span className="text-emerald-400">"{project.name}"</span>
+                        <span className="text-gray-300">"{project.name}"</span>
                         <span className="text-muted-foreground">,</span>
                       </div>
                       <div className="pl-4">
                         <span className="text-primary">"status"</span>
                         <span className="text-muted-foreground">: </span>
-                        <span className="text-emerald-400">"{project.status}"</span>
+                        <span className="text-gray-300">"{project.status}"</span>
                         <span className="text-muted-foreground">,</span>
                       </div>
                       <div className="pl-4">
                         <span className="text-primary">"metrics"</span>
                         <span className="text-muted-foreground">: </span>
-                        <span className="text-amber-400">
+                        <span className="text-gray-400">
                           "{project.requestsHandled || project.tvl || project.eventsProcessed || project.users}"
                         </span>
                       </div>
