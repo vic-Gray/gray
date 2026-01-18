@@ -2,10 +2,9 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Twitter, Youtube, Heart } from "lucide-react";
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "X" },
-  { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+  { icon: Github, href: "https://github.com/vic-Gray", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/victory-gray-b479a6351?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", label: "LinkedIn" },
+  { icon: Twitter, href: "https://x.com/victory_gr95109", label: "X" },
 ];
 
 const Footer = () => {
@@ -50,7 +49,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="text-sm text-muted-foreground flex items-center gap-1"
           >
-            © {currentYear} Made with <Heart size={14} className="text-primary" /> by Victory
+            © {currentYear} 
           </motion.div>
         </div>
 

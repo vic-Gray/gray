@@ -1,63 +1,108 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ExternalLink, Github, Server, Code, Database, Shield } from "lucide-react";
 
-const projects = [
+type Project = {
+  id: number;
+  name: string;
+  summary: string;
+  description: string;
+  status: string;
+  metrics?: string;
+  tech: string[];
+  icon: any;
+  github?: string;
+  live?: string;
+};
+
+const projects: Project[] = [
   {
     id: 1,
-    name: "Engagement API",
-    description: "High-performance REST API handling millions of requests for social engagement metrics.",
+    name: "🚀 Engagement API – Web3-Ready Content Interaction Platform",
+    summary: "Backend system to track social engagement and future Web3 rewards, easy for users and creators.",
+    description: `💡 Key Features:
+- Secure user registration & JWT login
+- Role-based permissions: Admin, User, Creator, Moderator
+- Content creation & media management
+- Likes, comments, engagement tracking
+- Cloud media uploads (Cloudinary)
+- Email notifications (Nodemailer)
+
+🔜 Planned:
+- Web3 reward triggers & smart contract integration
+- Rate limiting & spam detection
+- Pagination & user profile updates
+
+🛠 Tech Stack: NestJS, MongoDB, JWT, Cloudinary, Nodemailer`,
     status: "Active",
-    requestsHandled: "1,243,982",
-    tech: ["TypeScript", "Node.js", "Redis"],
+    metrics: "1,243,982 requests handled",
+    tech: ["NestJS", "MongoDB", "JWT", "Cloudinary", "Nodemailer"],
     icon: Server,
-    github: "#",
+    github: "https://github.com/vic-Gray/engagement-api",
     live: "#",
   },
   {
     id: 2,
-    name: "DeFi Protocol",
-    description: "Decentralized finance smart contracts enabling trustless token swaps on Ethereum.",
+    name: "📅 Event Management API – Role-Based Booking & Event Platform",
+    summary: "Backend API for managing events, bookings, and secure role-based access for organizers and users.",
+    description: `💡 Key Features:
+- Secure login & role-based access (Admin, Organizer, User)
+- Create, update, manage events
+- Book events & track participation
+- Transactional emails via Nodemailer
+
+🔜 Planned:
+- Real-time updates (WebSocket/SSE)
+- Rate limiting & spam protection
+- Analytics & user profiles
+
+🛠 Tech Stack: NestJS, PostgreSQL, TypeORM, JWT, Nodemailer`,
     status: "Active",
-    tvl: "$2.4M",
-    tech: ["Solidity", "Rust", "Web3.js"],
+    metrics: "$2.4M TVL",
+    tech: ["NestJS", "PostgreSQL", "TypeORM", "JWT", "Nodemailer"],
     icon: Shield,
-    github: "#",
+    github: "https://github.com/vic-Gray/event-api",
     live: "#",
   },
   {
     id: 3,
-    name: "Data Pipeline",
-    description: "Real-time data processing pipeline for analytics with 99.99% uptime.",
+    name: "🌐 Next-Gen – Frontend Experience Platform",
+    summary: "Interactive front-end app to track personal growth, habits, and productivity with responsive UI.",
+    description: `💡 Key Features:
+- Interactive dashboards with personalized modules
+- Responsive UI (mobile & desktop)
+- Theme toggling (light/dark)
+- Optimized performance & lazy loading
+- API integration ready
+
+🔜 Planned:
+- Real-time notifications
+- Analytics dashboards
+- AI-powered suggestions
+- PWA offline support
+
+🛠 Tech Stack: React, Next.js, TypeScript, CSS/Tailwind`,
     status: "Active",
-    eventsProcessed: "50M/day",
-    tech: ["Rust", "Kafka", "PostgreSQL"],
-    icon: Database,
-    github: "#",
-    live: "#",
-  },
-  {
-    id: 4,
-    name: "Auth Service",
-    description: "Microservice handling authentication and authorization for distributed systems.",
-    status: "Active",
-    users: "100K+",
-    tech: ["Go", "JWT", "OAuth2"],
+    metrics: "User growth tracking ongoing",
+    tech: ["React", "Next.js", "TypeScript", "Tailwind", "CSS"],
     icon: Code,
-    github: "#",
-    live: "#",
+    github: "https://github.com/vic-Gray/next-Gen",
+    live: "https://next-gen-ten-gamma.vercel.app",
   },
 ];
 
 const Projects = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [expandedProject, setExpandedProject] = useState<number | null>(null);
 
   return (
     <section id="projects" className="py-24 relative">
       <div className="container mx-auto px-6" ref={ref}>
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -68,10 +113,11 @@ const Projects = () => {
             <span className="text-primary">&gt;</span> Projects
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A collection of backend systems and Web3 projects I've built.
+            A curated collection of projects demonstrating backend systems, frontend experiences, and Web3 readiness.
           </p>
         </motion.div>
 
+        {/* Project Cards */}
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <motion.div
@@ -79,11 +125,12 @@ const Projects = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              onMouseEnter={() => setHoveredProject(project.id)}
-              onMouseLeave={() => setHoveredProject(null)}
-              className="group relative"
             >
-              <div className="terminal-window h-full hover:glow-border transition-all duration-300">
+              <div className="terminal-window h-full hover:glow-border transition-all duration-300 cursor-pointer"
+                onClick={() =>
+                  setExpandedProject(expandedProject === project.id ? null : project.id)
+                }
+              >
                 <div className="terminal-header">
                   <div className="terminal-dot terminal-dot-red" />
                   <div className="terminal-dot terminal-dot-yellow" />
@@ -109,27 +156,31 @@ const Projects = () => {
                       </div>
                     </div>
                     <div className="flex gap-2">
-                      <a
-                        href={project.github}
-                        className="p-2 hover:bg-secondary rounded-lg transition-colors"
-                        aria-label="View source"
-                      >
-                        <Github size={18} className="text-muted-foreground hover:text-primary" />
-                      </a>
-                      <a
-                        href={project.live}
-                        className="p-2 hover:bg-secondary rounded-lg transition-colors"
-                        aria-label="View live"
-                      >
-                        <ExternalLink size={18} className="text-muted-foreground hover:text-primary" />
-                      </a>
+                      {project.github && (
+                        <a
+                          href={project.github}
+                          className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Github size={18} className="text-muted-foreground hover:text-primary" />
+                        </a>
+                      )}
+                      {project.live && (
+                        <a
+                          href={project.live}
+                          className="p-2 hover:bg-secondary rounded-lg transition-colors"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink size={18} className="text-muted-foreground hover:text-primary" />
+                        </a>
+                      )}
                     </div>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
+                  {/* Summary */}
+                  <p className="text-muted-foreground text-sm mb-4">{project.summary}</p>
 
                   {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -143,40 +194,25 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* JSON Preview on Hover */}
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{
-                      opacity: hoveredProject === project.id ? 1 : 0,
-                      height: hoveredProject === project.id ? "auto" : 0,
-                    }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="bg-secondary/50 rounded-lg p-3 font-mono text-xs mt-4 border border-border">
-                      <div className="text-muted-foreground">{"{"}</div>
-                      <div className="pl-4">
-                        <span className="text-primary">"name"</span>
-                        <span className="text-muted-foreground">: </span>
-                        <span className="text-gray-300">"{project.name}"</span>
-                        <span className="text-muted-foreground">,</span>
-                      </div>
-                      <div className="pl-4">
-                        <span className="text-primary">"status"</span>
-                        <span className="text-muted-foreground">: </span>
-                        <span className="text-gray-300">"{project.status}"</span>
-                        <span className="text-muted-foreground">,</span>
-                      </div>
-                      <div className="pl-4">
-                        <span className="text-primary">"metrics"</span>
-                        <span className="text-muted-foreground">: </span>
-                        <span className="text-gray-400">
-                          "{project.requestsHandled || project.tvl || project.eventsProcessed || project.users}"
-                        </span>
-                      </div>
-                      <div className="text-muted-foreground">{"}"}</div>
-                    </div>
-                  </motion.div>
+                  {/* Full Details */}
+                  {expandedProject === project.id && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      transition={{ duration: 0.4 }}
+                      className="overflow-hidden bg-secondary/50 rounded-lg p-3 font-mono text-xs mt-4 border border-border"
+                    >
+                      <pre className="whitespace-pre-wrap text-muted-foreground">
+                        {project.description}
+                      </pre>
+                      {project.metrics && (
+                        <div className="mt-2">
+                          <span className="text-primary">Metrics: </span>
+                          <span>{project.metrics}</span>
+                        </div>
+                      )}
+                    </motion.div>
+                  )}
                 </div>
               </div>
             </motion.div>

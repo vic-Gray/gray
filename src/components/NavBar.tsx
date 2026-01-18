@@ -10,10 +10,9 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: Github, href: "https://github.com", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: Twitter, href: "https://twitter.com", label: "X" },
-  { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
+  { icon: Github, href: "https://github.com/vic-Gray", label: "GitHub" },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/victory-gray-b479a6351?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", label: "LinkedIn"},
+  { icon: Twitter, href: "https://x.com/victory_gr95109", label: "X" },
 ];
 
 const NavBar = () => {
@@ -33,11 +32,11 @@ const NavBar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-secondary/95 backdrop-blur-md border-b border-border"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
+    ${isScrolled || isMobileMenuOpen
+          ? "bg-gray-900/95 backdrop-blur-md border-b border-border"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">

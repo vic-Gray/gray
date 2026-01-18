@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
+
 const typingTexts = [
   "Building REST APIs...",
   "Deploying Smart Contracts...",
@@ -42,6 +43,7 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
+     
       <div className="absolute inset-0 bg-grid-pattern opacity-20" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
       

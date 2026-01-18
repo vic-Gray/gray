@@ -1,14 +1,18 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 const skills = [
   { name: "TypeScript", level: 95 },
+  { name: "Node.js", level: 90 },
   { name: "Rust", level: 80 },
   { name: "Move", level: 75 },
-  { name: "Node.js", level: 90 },
   { name: "PostgreSQL", level: 85 },
   { name: "Docker", level: 88 },
+  { name: "NestJS", level: 92 },
+  { name: "React/Next.js", level: 90 },
 ];
 
 const stats = [
@@ -16,6 +20,8 @@ const stats = [
   { label: "APIs Built", value: "50+" },
   { label: "Smart Contracts", value: "8" },
   { label: "Uptime", value: "99.99%" },
+  { label: "Users Served", value: "120k+" },
+  { label: "Cloud Integrations", value: "5+" },
 ];
 
 const About = () => {
@@ -24,9 +30,10 @@ const About = () => {
 
   return (
     <section id="about" className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
-      
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/10 to-background" />
+
       <div className="container mx-auto px-6 relative z-10" ref={ref}>
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -37,29 +44,28 @@ const About = () => {
             <span className="text-primary">&gt;</span> About Me
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A passionate backend engineer specializing in building scalable systems and exploring the decentralized future.
+            I’m Victory Ifeanyi Azuonye, a passionate backend engineer and Web3 explorer. I specialize in building **scalable APIs, microservices, and smart contracts**, while integrating **cloud infrastructure and real-time systems** for high-traffic platforms.
           </p>
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left: Profile & Description */}
+          {/* Left: Profile & Detailed JSON */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {/* Avatar Placeholder */}
+            {/* Avatar */}
             <div className="relative mb-8 flex justify-center lg:justify-start">
-              <div className="w-48 h-48 rounded-xl bg-gradient-to-br from-white/10 to-secondary border border-border overflow-hidden glow-border">
-                <div className="w-full h-full bg-secondary flex items-center justify-center">
-                  <span className="text-6xl">👨‍💻</span>
-                </div>
+              <div className="w-48 h-48 rounded-xl bg-gradient-to-br from-white/10 to-secondary border border-border overflow-hidden glow-border flex items-center justify-center">
+                <span className="text-6xl">👨‍💻</span>
               </div>
-              <div className="absolute -bottom-2 -right-2 lg:right-auto lg:-bottom-2 lg:-right-2 bg-primary text-primary-foreground px-3 py-1 rounded text-sm font-mono">
+              <div className="absolute -bottom-2 -right-2 bg-primary text-primary-foreground px-3 py-1 rounded text-sm font-mono">
                 status: online
               </div>
             </div>
 
+            {/* Terminal-style JSON */}
             <div className="terminal-window">
               <div className="terminal-header">
                 <div className="terminal-dot terminal-dot-red" />
@@ -68,32 +74,23 @@ const About = () => {
                 <span className="ml-4 text-sm text-muted-foreground">about.json</span>
               </div>
               <div className="p-4 font-mono text-sm space-y-2">
-                <div className="code-line">
-                  <span className="text-muted-foreground">{"{"}</span>
+                <div>{"{"}</div>
+                <div className="pl-4">
+                  <span className="text-primary">"name"</span>: <span className="text-gray-300">"Victory Ifeanyi Azuonye"</span>,
                 </div>
-                <div className="code-line pl-4">
-                  <span className="text-primary">"name"</span>
-                  <span className="text-muted-foreground">:</span>
-                  <span className="text-gray-300 ml-2">"Victory Ifeanyi Azuonye"</span>
+                <div className="pl-4">
+                  <span className="text-primary">"role"</span>: <span className="text-gray-300">"Backend Engineer & Web3 Explorer"</span>,
                 </div>
-                <div className="code-line pl-4">
-                  <span className="text-primary">"role"</span>
-                  <span className="text-muted-foreground">:</span>
-                  <span className="text-gray-300 ml-2">"Backend Engineer"</span>
+                <div className="pl-4">
+                  <span className="text-primary">"focus"</span>: <span className="text-gray-300">["APIs", "Microservices", "Web3", "Cloud", "DevOps"]</span>,
                 </div>
-                <div className="code-line pl-4">
-                  <span className="text-primary">"focus"</span>
-                  <span className="text-muted-foreground">:</span>
-                  <span className="text-gray-300 ml-2">["APIs", "Web3", "DevOps"]</span>
+                <div className="pl-4">
+                  <span className="text-primary">"experience"</span>: <span className="text-gray-300">"Building scalable backend systems for high-traffic platforms, deploying smart contracts, and integrating with cloud services."</span>,
                 </div>
-                <div className="code-line pl-4">
-                  <span className="text-primary">"available"</span>
-                  <span className="text-muted-foreground">:</span>
-                  <span className="text-gray-400 ml-2">true</span>
+                <div className="pl-4">
+                  <span className="text-primary">"available"</span>: <span className="text-gray-400">true</span>
                 </div>
-                <div className="code-line">
-                  <span className="text-muted-foreground">{"}"}</span>
-                </div>
+                <div>{"}"}</div>
               </div>
             </div>
           </motion.div>
@@ -105,7 +102,7 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-8"
           >
-            {/* Stats Grid */}
+            {/* Stats */}
             <div className="grid grid-cols-2 gap-4">
               {stats.map((stat, index) => (
                 <motion.div
@@ -115,9 +112,7 @@ const About = () => {
                   transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
                   className="bg-card border border-border rounded-lg p-4 text-center hover:border-primary/50 transition-colors"
                 >
-                  <div className="text-2xl md:text-3xl font-bold text-primary mb-1">
-                    {stat.value}
-                  </div>
+                  <div className="text-2xl md:text-3xl font-bold text-primary mb-1">{stat.value}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
                 </motion.div>
               ))}
@@ -133,7 +128,7 @@ const About = () => {
               </div>
               <div className="p-4 space-y-4">
                 <div className="text-sm text-muted-foreground mb-4">
-                  <span className="text-primary">$</span> loading skills...
+                  <span className="text-primary">$</span> loading skill modules...
                 </div>
                 {skills.map((skill, index) => (
                   <motion.div
